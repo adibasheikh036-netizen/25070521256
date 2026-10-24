@@ -1,6 +1,6 @@
 const TOKEN_KEY = 'portal.token';
 
-const OFFLINE_MESSAGE = 'Cannot reach the server. Make sure the SERVER window is open (run start.bat).';
+const OFFLINE_MESSAGE = 'Cannot reach the server. Make sure the server is running (npm run dev in the server folder).';
 
 // "Remember me" keeps the token after the browser is closed (localStorage);
 // otherwise it lasts only for this tab (sessionStorage).

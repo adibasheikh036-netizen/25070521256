@@ -10,9 +10,6 @@ A student portal with **Sign up**, **Sign in** and a **dashboard**. Accounts are
 
 ```
 25070521256/
-├── setup.bat              ← one-time install (double-click)
-├── start.bat              ← starts the whole app (double-click)
-│
 ├── client/                ← React frontend (http://localhost:5173)
 │   └── src/
 │       ├── pages/         AuthPage.jsx (sign in + sign up), Dashboard.jsx
@@ -33,7 +30,7 @@ A student portal with **Sign up**, **Sign in** and a **dashboard**. Accounts are
 
 ---
 
-## Run it on Windows
+## Run it
 
 ### 1. Install these once
 
@@ -44,43 +41,7 @@ A student portal with **Sign up**, **Sign in** and a **dashboard**. Accounts are
 
 ### 2. Start the app
 
-1. Double-click **`setup.bat`** (first time only; it installs the packages).
-2. Double-click **`start.bat`**.
-
-Two black windows open (**SERVER** and **CLIENT**), and the browser opens **http://localhost:5173**.
-Keep both windows open while you use the app. Close them to stop it.
-
-> `start.bat` runs the setup by itself if you forget step 1.
-
----
-
-## Using your own MongoDB URL
-
-Open **`server/.env`** in Notepad or VS Code and change one line:
-
-```env
-# Local MongoDB (default, same as Compass "localhost:27017")
-MONGO_URI=mongodb://127.0.0.1:27017/student_portal
-
-# or MongoDB Atlas (cloud)
-MONGO_URI=mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/student_portal
-```
-
-Save the file and run `start.bat` again. You don't need to create anything: the database and the **users** collection are created automatically on the first signup.
-
-> If your Atlas password has special characters like `@ # / :`, URL-encode them (e.g. `@` → `%40`).
-
-## Seeing the data in MongoDB Compass
-
-1. Open Compass and connect to `mongodb://localhost:27017` (or your Atlas URL).
-2. Open the database **student_portal** and then the collection **users**.
-3. Every signup appears there. The password field holds a **bcrypt hash**, not the real password.
-
----
-
-## Run it manually (VS Code terminal)
-
-Open two terminals:
+Open two terminals (for example in VS Code):
 
 ```bash
 # Terminal 1 – server
@@ -95,6 +56,35 @@ cd client
 npm install
 npm run dev
 ```
+
+Then open **http://localhost:5173** in the browser.
+Keep both terminals running while you use the app. Press `Ctrl + C` in each one to stop it.
+
+> `npm install` is only needed the first time.
+
+---
+
+## Using your own MongoDB URL
+
+Copy **`server/.env.example`** to **`server/.env`**, open it in Notepad or VS Code and change one line:
+
+```env
+# Local MongoDB (default, same as Compass "localhost:27017")
+MONGO_URI=mongodb://127.0.0.1:27017/student_portal
+
+# or MongoDB Atlas (cloud)
+MONGO_URI=mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/student_portal
+```
+
+Save the file and restart the server. Without a `.env` file the server uses the local MongoDB URL above. You don't need to create anything: the database and the **users** collection are created automatically on the first signup.
+
+> If your Atlas password has special characters like `@ # / :`, URL-encode them (e.g. `@` → `%40`).
+
+## Seeing the data in MongoDB Compass
+
+1. Open Compass and connect to `mongodb://localhost:27017` (or your Atlas URL).
+2. Open the database **student_portal** and then the collection **users**.
+3. Every signup appears there. The password field holds a **bcrypt hash**, not the real password.
 
 ---
 
@@ -117,11 +107,11 @@ npm run dev
 
 | Problem | Fix |
 |---|---|
-| SERVER window says **"Could not connect to MongoDB"** | MongoDB is not running. Press `Win + R`, type `services.msc`, find **MongoDB Server** and click **Start**. |
-| Login page shows **"Server offline"** | The SERVER window was closed or shows an error. Run `start.bat` again and read the SERVER window. |
-| **"npm.ps1 cannot be loaded… running scripts is disabled"** (PowerShell) | Use `start.bat`, or use **Command Prompt** instead of PowerShell, or run once: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` |
-| **"Port 5000 is already in use"** | Close the old SERVER window, or change `PORT=` in `server/.env`. |
-| Strange errors after copying the project from another computer | Delete both `node_modules` folders and run `setup.bat` again. **Never copy `node_modules`** between computers, especially from Linux/Mac to Windows. |
+| Server terminal says **"Could not connect to MongoDB"** | MongoDB is not running. Press `Win + R`, type `services.msc`, find **MongoDB Server** and click **Start**. |
+| Login page shows **"Server offline"** | The server terminal was closed or shows an error. Run `npm run dev` in the `server` folder again and read the error. |
+| **"npm.ps1 cannot be loaded… running scripts is disabled"** (PowerShell) | Use **Command Prompt** instead of PowerShell, or run once: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` |
+| **"Port 5000 is already in use"** | Stop the old server terminal, or change `PORT=` in `server/.env`. |
+| Strange errors after copying the project from another computer | Delete both `node_modules` folders and run `npm install` in each folder again. **Never copy `node_modules`** between computers, especially from Linux/Mac to Windows. |
 | Very slow install | Move the project out of OneDrive/Desktop to a folder like `C:\Projects\25070521256`. |
 
 > The code uses `127.0.0.1` instead of `localhost` on purpose. On Windows, newer Node.js versions resolve `localhost` to IPv6 (`::1`), which MongoDB does not listen on by default.

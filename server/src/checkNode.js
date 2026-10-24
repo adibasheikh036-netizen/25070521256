@@ -5,6 +5,6 @@ const supported = major > 22 || (major === 22 && minor >= 12) || (major === 20 &
 
 if (!supported) {
   console.error(`\n  Your Node.js version is ${process.versions.node}, which is too old.`);
-  console.error('  Please install the LTS version from https://nodejs.org and run setup.bat again.\n');
+  console.error('  Please install the LTS version from https://nodejs.org and try again.\n');
   process.exit(1);
 }

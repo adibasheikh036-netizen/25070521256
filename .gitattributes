@@ -1,3 +1,0 @@
-# Windows files keep CRLF line endings (also in GitHub "Download ZIP")
-*.bat text eol=crlf
-*.txt text eol=crlf
