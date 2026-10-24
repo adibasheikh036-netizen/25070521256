@@ -1,0 +1,69 @@
+==========================================================
+  ADIBA SHEIKH - STUDENT PORTAL
+  Windows laptop pe kaise chalayein (aasaan steps)
+==========================================================
+
+PEHLI BAAR (ye sirf ek baar karna hai)
+--------------------------------------
+1) Node.js install karo
+   - https://nodejs.org kholo
+   - "LTS" wala button dabao, file download hogi
+   - File kholo aur Next, Next, Install, Finish dabate jao
+
+2) MongoDB install karo (MongoDB Compass bhi iske saath aa jayega)
+   - https://www.mongodb.com/try/download/community kholo
+   - Platform: Windows, Package: msi  ->  Download
+   - File kholo  ->  "Complete" chuno
+   - "Install MongoD as a Service"  ->  TICK rehne do
+   - "Install MongoDB Compass"      ->  TICK rehne do
+   - Next, Install, Finish
+
+3) Laptop ek baar RESTART karo
+
+4) Zip ko extract karo
+   - 25070521256.zip pe Right-click  ->  "Extract All..."  ->  "Extract"
+   - Naya folder "25070521256" khulega, usme setup.bat aur start.bat dikhenge
+   - Zip ke ANDAR se kuch mat chalao, pehle extract karna zaroori hai
+
+5) setup.bat pe double-click karo
+   - Internet ON rakho, 2-5 minute lagenge
+   - "Setup complete!" aaye to koi bhi key dabao
+   - Agar "Windows protected your PC" aaye:  "More info"  ->  "Run anyway"
+
+
+PROJECT CHALANA (har baar)
+--------------------------
+6) start.bat pe double-click karo
+   - Do kaali windows khulengi: "Portal SERVER" aur "Portal CLIENT"
+   - Browser apne aap http://localhost:5173 khol dega
+     (na khule to Chrome me khud ye address likho)
+   - Dono kaali windows KHULI rakho. Band karoge to app band ho jayegi.
+
+7) Sign up karo  ->  Dashboard khul jayega
+
+
+DATA DEKHNA (MongoDB Compass)
+-----------------------------
+8) MongoDB Compass kholo
+   - "Add new connection" ya "+" dabao
+   - URI me likho:  mongodb://localhost:27017
+   - "Save & Connect" dabao
+   - student_portal  ->  users   (yahan saare signup dikhenge)
+   - Kuch na dikhe to refresh button dabao
+
+
+PROBLEM AAYE TO
+---------------
+* "Node.js is not installed"
+    ->  Step 1 dobara karo, phir laptop restart karo
+
+* SERVER window me "Could not connect to MongoDB"
+    ->  Win + R dabao, services.msc likho, Enter
+    ->  "MongoDB Server" dhundo  ->  Right-click  ->  Start
+    ->  Phir start.bat dobara chalao
+
+* Login page ke neeche "Server offline"
+    ->  SERVER window band ho gayi ya usme error hai. start.bat dobara chalao
+
+* "Port 5000 is already in use"
+    ->  Purani kaali windows band karo, phir start.bat chalao
